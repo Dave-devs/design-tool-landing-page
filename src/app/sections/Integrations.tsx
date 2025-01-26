@@ -1,53 +1,47 @@
 import Tag from "../components/Tag";
-import figmaIcon from "../assets/images/figma-logo.svg";
-import notionIcon from "../assets/images/notion-logo.svg";
-import slackIcon from "../assets/images/slack-logo.svg";
-import relumeIcon from "../assets/images/relume-logo.svg";
-import framerIcon from "../assets/images/framer-logo.svg";
-import githubIcon from "../assets/images/github-logo.svg";
 import IntegrationItem from "../components/IntegrationItem";
 
 const integrations = [
   {
     name: "Figma",
-    icon: figmaIcon,
+    icon: '/figma-logo.svg',
     description: "Figma is a collaborative interface design tool.",
   },
   {
     name: "Notion",
-    icon: notionIcon,
+    icon: "/notion-logo.svg",
     description: "Notion is an all-in-one workspace for notes and docs.",
   },
   {
     name: "Slack",
-    icon: slackIcon,
+    icon: '/slack-logo.svg',
     description: "Slack is a powerful team communication platform.",
   },
   {
     name: "Relume",
-    icon: relumeIcon,
+    icon: '/relume-logo.svg',
     description: "Relume is a no-code website builder and design system.",
   },
   {
     name: "Framer",
-    icon: framerIcon,
+    icon: '/framer-logo.svg',
     description: "Framer is a professional website prototyping tool.",
   },
   {
     name: "GitHub",
-    icon: githubIcon,
+    icon: '/github-logo.svg',
     description: "GitHub is the leading platform for code collaboration.",
   },
 ];
 
 export type IntegrationsType = typeof integrations;
 
-export default function Integrations() {
+export const  Integrations = () => {
   return (
-    <section className="py-24 overflow-hidden">
+    <section id="integrations" className="py-24 px-6 overflow-hidden">
       <div className="container">
         <div className="grid lg:grid-cols-2 items-center lg:gap-16">
-          <div className="">
+          <div>
             <Tag>Integrations</Tag>
             <h2 className="text-6xl font-medium mt-6">
               Plays well with <span className="text-lime-400">others</span>
@@ -63,6 +57,7 @@ export default function Integrations() {
               <IntegrationItem
                 integrations={integrations.slice().reverse()}
                 className="hidden md:flex"
+                reverse
               />
             </div>
           </div>

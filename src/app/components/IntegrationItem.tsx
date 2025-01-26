@@ -1,28 +1,49 @@
+"use client";
+
 import { twMerge } from "tailwind-merge";
 import { IntegrationsType } from "../sections/Integrations";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { Fragment } from "react";
 
-const IntegrationItem = (props: { integrations: IntegrationsType, className?: string }) => {
-  const { integrations, className } = props;
+const IntegrationItem = (props: {
+  integrations: IntegrationsType;
+  className?: string;
+  reverse?: boolean;
+}) => {
+  const { integrations, className, reverse } = props;
   return (
-    <div className={twMerge("flex flex-col gap-6 pb-4", className)}>
-      {integrations.map((item) => (
-        <div
-          className="bg-neutral-900 border border-white/10 rounded-3xl p-6"
-          key={item.name}
-        >
-          <div className="flex justify-center">
-            <Image
-              className="size-24"
-              src={item.icon}
-              alt={`${item.name} logo`}
-            />
-          </div>
-          <h3 className="text-3xl text-center mt-6">{item.name}</h3>
-          <p className="text-center text-white/50 mt-2">{item.description}</p>
-        </div>
+    <motion.div
+    initial={{y: reverse ? '-50%' : 0 }}
+      animate={{ y: reverse ? 0 : "-50%" }}
+      transition={{ duration: 15, repeat: Infinity, ease: 'linear'}}
+      className={twMerge("flex flex-col gap-6 pb-4", className)}
+    >
+      {Array.from({ length: 2 }).map((_, i) => (
+        <Fragment key={i}>
+          {integrations.map((item) => (
+            <div
+              className="bg-neutral-900 border border-white/10 rounded-3xl p-6"
+              key={item.name}
+            >
+              <div className="flex justify-center">
+                <Image
+                  className="size-24"
+                  width={100}
+                  height={100}
+                  src={item.icon}
+                  alt={`${item.name} logo`}
+                />
+              </div>
+              <h3 className="text-3xl text-center mt-6">{item.name}</h3>
+              <p className="text-center text-white/50 mt-2">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </Fragment>
       ))}
-    </div>
+    </motion.div>
   );
 };
 
