@@ -39,7 +39,7 @@ export const Hero = () => {
     ]);
   }, [leftDesignAnimate, leftDesignScope, leftPointerAnimate, leftPointerScope, rightDesignAnimate, rightDesignScope, rightPointerAnimate, rightPointerScope]);
   return (
-    <section className="py-24 px-6 overflow-x-clip" style={{ cursor: `url(${'/cursor-you.svg'}), auto`}}>
+    <section className="py-24 px-6 overflow-x-clip" style={{ cursor: `url(${'/cursor-you.svg'}), auto` }}>
       <div className="container relative">
         {/* Left Drag Animation */}
         <motion.div
@@ -50,10 +50,10 @@ export const Hero = () => {
         >
           <Image
             src={"/design-example-1.png"}
-            alt="Design example 1 iamge"
+            alt="Design example 1 image"
             width={100}
             height={100}
-            draggable={false}
+            draggable
           />
         </motion.div>
         <motion.div
